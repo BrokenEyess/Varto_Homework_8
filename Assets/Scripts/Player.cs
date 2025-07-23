@@ -13,9 +13,12 @@ public class Player : MonoBehaviour
     private float _distanceToGround = 1.1f;
 
     [SerializeField] private LayerMask _groundMask;
+
+    [SerializeField] private float _moveSpeed;
     
     private bool _isJumping = false;
     private bool _isOnGround = false;
+    private float _inputHorizontal;
 
 
     void Update()
@@ -26,15 +29,8 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            _player.linearVelocity = new Vector2(-2f, 0);
-        }
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            _player.linearVelocity = new Vector2(2f, 0);
-        }
+        _inputHorizontal = Input.GetAxis("Horizontal");
+        _player.velocity = new Vector2(_inputHorizontal * _moveSpeed, _player.velocity.y);
     }
 
     private void CalculateJump()
