@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     private void Move()
     {
         _inputHorizontal = Input.GetAxis("Horizontal");
-        _player.velocity = new Vector2(_inputHorizontal * _moveSpeed, _player.velocity.y);
+        _player.linearVelocity = new Vector2(_inputHorizontal * _moveSpeed, _player.linearVelocity.y);
     }
 
     private void CalculateJump()
