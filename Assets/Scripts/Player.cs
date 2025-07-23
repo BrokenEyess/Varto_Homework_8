@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
     private float _inputHorizontal;
 
 
-    void Update()
+    void FixedUpdate()
     {
         CalculateJump();
         Move();
@@ -36,21 +36,7 @@ public class Player : MonoBehaviour
     private void CalculateJump()
     {
         _isOnGround = Physics2D.Raycast(_player.position, Vector2.down, _distanceToGround, _groundMask);
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            _isJumping = true;
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        if (_isOnGround)
-        {
-            if (_isJumping)
-            {
-                _player.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
-                _isJumping = false;
-            }
-        }
+        if(_isOnGround && Input.GetKeyDown(KeyCode.Space))
+            _player.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
     }
 }

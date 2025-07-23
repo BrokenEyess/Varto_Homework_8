@@ -697,6 +697,7 @@ MonoBehaviour:
   _groundMask:
     serializedVersion: 2
     m_Bits: 8192
+  _moveSpeed: 2.06
 --- !u!1001 &912546948
 PrefabInstance:
   m_ObjectHideFlags: 0
